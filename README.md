@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dynamic News Portal – Next.js App Router Project
 
-## Getting Started
+A fully dynamic and SEO-optimized news application built with **Next.js (App Router)** that fetches real-time data from multiple News APIs and renders dynamic article detail pages with responsive design for Mobile, Tablet, and Desktop.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Multiple News Categories (4 APIs)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Dynamic API fetching
+- Real-time news updates
+- Server-side data handling
+- Cached API responses with revalidation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Dynamic Routing
 
-## Learn More
+- SEO-friendly dynamic slug routes
+- Individual article detail pages
+- Dynamic metadata generation
+- Open Graph & Twitter card support
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Dynamic Metadata (SEO Optimized)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Dynamic `<title>`
+- Dynamic `<meta description>`
+- OpenGraph support
+- Twitter card preview
+- Article-specific metadata
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Smart Data Handling
 
-## Deploy on Vercel
+- Async route params (Next.js latest version compatible)
+- Optimized API fetching
+- Revalidation support
+- Error handling with graceful fallback
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Fully Responsive UI
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Mobile optimized
+- Tablet optimized
+- Desktop optimized
+- Clean layout with adaptive spacing
+- Performance-focused UI structure
+
+---
+
+## Tech Stack
+
+- **Next.js (App Router)**
+- **React 18+**
+- **TypeScript**
+- **Dynamic Server Components**
+- **News API Integration**
+- **SEO Metadata API**
+- **Responsive CSS (Tailwind / Custom CSS)**
+
