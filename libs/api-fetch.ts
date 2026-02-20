@@ -14,7 +14,7 @@ export async function fetchApis(apiUrl: string): Promise<Api[]> {
     }
 
     const data: ApiResponse = await res.json();
-
+    // throw new Error("Failed to fetch news");
     return data.articles ?? [];
   } catch (error) {
     console.error("News API Error:", error);

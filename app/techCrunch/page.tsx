@@ -10,7 +10,9 @@ export default async function page() {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 px-2 md:px-20 gap-2 md:gap-5">
         {articles.map((article, index) => {
-          return <NewsCard key={index} article={article} basePath="techCrunch" />;
+          return (
+            <NewsCard key={index} article={article} basePath="techCrunch" />
+          );
         })}
       </div>
     </>
