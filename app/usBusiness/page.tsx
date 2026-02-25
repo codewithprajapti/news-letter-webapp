@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default async function page() {
-  const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+  const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.NEWS_API_KEY}`;
   const articles: Api[] = await fetchApis(url);
 
   return (

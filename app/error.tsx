@@ -9,9 +9,7 @@ interface ErrorProps {
 }
 
 export default function Error({ error, reset }: ErrorProps) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
+  useEffect(() => {}, [error]);
 
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-6">

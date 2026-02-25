@@ -3,6 +3,7 @@ import { fetchApis } from "@/libs/api-fetch";
 import { Api } from "@/types/apis";
 import NewsDetailComponent from "@/components/NewsDetailComponent";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -12,14 +13,17 @@ interface NewsDetailProps {
   }>;
 }
 
-const url = `https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+const url = `https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${process.env.NEWS_API_KEY}`;
 
 export async function generateMetadata({
   params,
 }: NewsDetailProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const articles: Api[] = await fetchApis(url);
+  const articles: Api[] | null = await fetchApis(url);
+  if (articles == null) {
+    notFound();
+  }
   const article = articles.find((item) => slugify(item.title) === slug);
 
   if (!article) {
@@ -35,7 +39,10 @@ export async function generateMetadata({
 export default async function NewsDetail({ params }: NewsDetailProps) {
   const { slug } = await params;
 
-  const articles: Api[] = await fetchApis(url);
+  const articles: Api[] | null = await fetchApis(url);
+  if (articles == null) {
+    notFound();
+  }
   const article = articles.find((item) => slugify(item.title) === slug);
 
   if (!article) {

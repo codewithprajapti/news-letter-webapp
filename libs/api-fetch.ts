@@ -1,23 +1,24 @@
 import { Api, ApiResponse } from "@/types/apis";
 
-export async function fetchApis(apiUrl: string): Promise<Api[]> {
+export async function fetchApis(apiUrl: string): Promise<Api[] | null> {
   try {
     const res: Response = await fetch(apiUrl, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 300 },
     });
+
+    if (res.status === 404) {
+      return null;
+    }
 
     if (!res.ok) {
       const errorData = await res.json();
-      console.error("Status:", res.status);
-      console.error("Error Data:", errorData);
-      throw new Error("Failed to fetch news");
+
+      throw new Error("Failed to fetch news", errorData);
     }
 
     const data: ApiResponse = await res.json();
-    // throw new Error("Failed to fetch news");
     return data.articles ?? [];
   } catch (error) {
-    console.error("News API Error:", error);
-    return [];
+    throw new Error("Failed to fetch news");
   }
 }

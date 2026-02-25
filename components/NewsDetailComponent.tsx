@@ -36,12 +36,10 @@ export default function NewsDetailComponent({ article }: NewsDetailProps) {
           <p className="text-secondary"> Author : {article.author} </p>
         </div>
         <p>
-          {" "}
-          {article.description}{" "}
+          {article.description}
           <a href={article.url} target="_blank">
-            {" "}
-            Read More{" "}
-          </a>{" "}
+            Read More
+          </a>
         </p>
       </div>
     </>
