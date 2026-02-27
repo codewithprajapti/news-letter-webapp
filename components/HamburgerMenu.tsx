@@ -5,9 +5,11 @@ import Link from "next/link";
 
 export default function HamburgerMenu() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
+
   return (
     <>
       <div className="md:hidden block border-0 relative">
@@ -26,6 +28,7 @@ export default function HamburgerMenu() {
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
+          {/* Menu Links */}
           <div className="flex flex-col gap-2 text-lg">
             <Link href="/">Tesla</Link>
             <Link href="/usBusiness">US Business Headlines</Link>

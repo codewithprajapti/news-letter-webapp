@@ -17,12 +17,12 @@ export default function NewsDetailComponent({ article }: NewsDetailProps) {
             src={article.urlToImage ?? fallback}
             alt={article.title}
             fill
-            priority
             quality={75}
             sizes="100vw"
             className="object-cover"
             placeholder="blur"
             blurDataURL="/image-placeholder.png"
+            loading="lazy"
           />
         </div>
         <h1 className="text-lg md:text-2xl font-black md:font-bold text-blue-900">

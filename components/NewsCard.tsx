@@ -28,6 +28,7 @@ export default function NewsCard({ article, basePath }: NewsCardProps) {
             placeholder="blur"
             blurDataURL="/image-placeholder.png"
             quality={65}
+            loading="lazy"
           />
         </div>
         <div className="px-2 flex flex-col gap-3 pb-4">
