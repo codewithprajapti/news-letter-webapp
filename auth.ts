@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
+import { env } from "./libs/env";
 
 import { signInSchema } from "./libs/zod";
 import { getUserFromJson } from "./libs/getUser";
@@ -9,8 +10,8 @@ import { verifyPassword } from "./libs/password";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: env.GOOGLE_CLIENT_ID!,
+      clientSecret: env.GOOGLE_CLIENT_SECRET!,
     }),
 
     Credentials({
@@ -48,5 +49,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
   },
 
-  secret: process.env.AUTH_SECRET,
+  secret: env.AUTH_SECRET,
 });

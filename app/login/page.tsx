@@ -1,7 +1,6 @@
+import LoginForm from "@/components/LoginForm";
 import SignIn from "@/components/SignIn";
-import { loginAction } from "@/libs/loginActions";
 import Link from "next/link";
-import React from "react";
 
 export default function Login() {
   return (
@@ -10,30 +9,7 @@ export default function Login() {
         <div className="w-104 bg-white rounded-lg shadow-lg p-8 flex flex-col gap-[1.2rem]">
           <h1 className="text-[1.7rem] font-semibold text-center">Login</h1>
 
-          <form action={loginAction} className="flex flex-col gap-4">
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Email"
-              className="w-full border border-neutral-300 rounded-md p-[0.8rem] text-[1rem] outline-none focus:border-black"
-            />
-
-            <input
-              type="password"
-              name="password"
-              required
-              placeholder="Password"
-              className="w-full border border-neutral-300 rounded-md p-[0.8rem] text-[1rem] outline-none focus:border-black"
-            />
-
-            <button
-              type="submit"
-              className="w-full bg-black text-white rounded-md py-[0.8rem] text-[1rem] hover:opacity-90 transition cursor-pointer"
-            >
-              Login
-            </button>
-          </form>
+          <LoginForm />
 
           <div className="flex items-center gap-[0.6rem]">
             <div className="flex-1 h-[0.06rem] bg-neutral-300" />
@@ -45,7 +21,7 @@ export default function Login() {
             <SignIn />
           </div>
 
-          <p className="text-center text-[0.9rem] text-neutral-600">
+          <p className="text-center text-[0.9rem] text-neutral-600 flex gap-1 self-center">
             No account?
             <Link
               href="/register"

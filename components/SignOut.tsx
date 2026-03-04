@@ -1,4 +1,4 @@
-import { signOut } from "@/auth.ts";
+import { signOut } from "@/auth";
 import { LogOut } from "lucide-react";
 
 export function SignOut() {
