@@ -5,7 +5,7 @@ import NewsDetailComponent from "@/components/NewsDetailComponent";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CommentForm from "@/components/CommentForm";
-import DisplayComments from "@/components/DisplayComments";
+import DisplayComments from "@/components/commets/DisplayComments";
 
 export const dynamic = "force-dynamic";
 
