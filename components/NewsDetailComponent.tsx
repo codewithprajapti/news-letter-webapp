@@ -1,14 +1,19 @@
 import { formatRelativeTime } from "@/libs/formateDateAndTime";
 import { Api } from "@/types/apis";
 import Image from "next/image";
+import LikeButton from "./LikeButton";
+import { getLikes } from "@/libs/getLikes";
 
 interface NewsDetailProps {
   article: Api;
 }
 
-export default function NewsDetailComponent({ article }: NewsDetailProps) {
+export default async function NewsDetailComponent({
+  article,
+}: NewsDetailProps) {
   const fallback =
     "https://cdndark.darkhorizons.com/wp-content/uploads/2026/02/sony-considers-a-ps6-delay-to-2028-2029.jpg";
+  const { likeCount, liked } = await getLikes(article.url);
   return (
     <>
       <div className="flex flex-col gap-5 ">
@@ -34,6 +39,11 @@ export default function NewsDetailComponent({ article }: NewsDetailProps) {
           </p>
           <p className="text-secondary"> Source : {article.source.name} </p>
           <p className="text-secondary"> Author : {article.author} </p>
+          <LikeButton
+            postId={article.url}
+            initialLikes={likeCount}
+            initiallyLiked={liked}
+          />
         </div>
         <p>
           {article.description}
