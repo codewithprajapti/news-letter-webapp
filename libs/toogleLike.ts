@@ -1,19 +1,16 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
 import { auth } from "@/auth";
+import { readLikes, writeLikes } from "@/libs/storage";
 
 export async function toggleLike(postId: string) {
   const session = await auth();
+
   if (!session) throw new Error("Login required");
 
   const userId = session.user?.email;
 
-  const filePath = path.join(process.cwd(), "libs/likes.json");
-
-  const file = await fs.readFile(filePath, "utf-8");
-  const likes = JSON.parse(file);
+  const likes = await readLikes();
 
   const existing = likes.find(
     (l: any) => l.postId === postId && l.userId === userId,
@@ -26,16 +23,17 @@ export async function toggleLike(postId: string) {
       (l: any) => !(l.postId === postId && l.userId === userId),
     );
   } else {
-    likes.push({
-      id: Date.now().toString(),
-      postId,
-      userId,
-    });
-
-    updatedLikes = likes;
+    updatedLikes = [
+      ...likes,
+      {
+        id: Date.now().toString(),
+        postId,
+        userId,
+      },
+    ];
   }
 
-  await fs.writeFile(filePath, JSON.stringify(updatedLikes, null, 2));
+  await writeLikes(updatedLikes);
 
   const likeCount = updatedLikes.filter((l: any) => l.postId === postId).length;
 
