@@ -1,8 +1,5 @@
-import NewsCard from "@/components/NewsCard";
-import { fetchApis } from "@/libs/api-fetch";
-import { Api } from "@/types/apis";
+import NewsGrid from "@/components/NewsGrid";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Tesla News & EV Industry Updates",
@@ -29,18 +26,10 @@ export const metadata: Metadata = {
 export default async function page() {
   const url = `https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt&apiKey=
 ${process.env.NEWS_API_KEY}`;
-  const articles: Api[] | null = await fetchApis(url);
-  if(articles == null){
-    notFound()
-  }
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 px-2 md:px-20 gap-2 md:gap-5">
-        {articles.map((article, index) => {
-          return <NewsCard key={index} article={article} />;
-        })}
-      </div>
+      <NewsGrid url={url} basePath="" />
     </>
   );
 }
